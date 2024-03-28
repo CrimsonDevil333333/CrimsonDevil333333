@@ -1,6 +1,5 @@
 <div id="header" align="center">
   <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/>
-</div>
 
 <div id="badges" align="center">
   <a href="https://www.linkedin.com/in/satyaa-g-b4b399111/">
@@ -15,10 +14,6 @@
   <h3>
     hey there 👋
   </h3>
-</div>
-
-<div align="center">
-  <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" width="600" height="300"/>
 </div>
 
 <h2><img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> About Me</h2>
@@ -47,8 +42,8 @@ I am a Full Stack Developer from India.
 
 <h2>📊 Github Stats:</h2>
 
-[![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=CrimsonDevil333333&theme=vue-dark&hide_border=true&date_format=j%20M%5B%20Y%5D)](https://git.io/streak-stats)
+
 
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=CrimsonDevil333333&layout=compact&theme=cobalt)](https://github.com/anuraghazra/github-readme-stats)
 <br>
-
+</div>
