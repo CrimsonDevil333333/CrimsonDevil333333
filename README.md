@@ -18,7 +18,7 @@
 
 <h2><img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> About Me</h2>
 I am a Full Stack Developer from India. 
-
+<!--
 <h2>:hammer_and_wrench: Languages and Tools:</h2>
 
 <div>
@@ -47,3 +47,4 @@ I am a Full Stack Developer from India.
 [![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=CrimsonDevil333333&layout=compact&theme=cobalt)](https://github.com/anuraghazra/github-readme-stats)
 <br>
 </div>
+-->
