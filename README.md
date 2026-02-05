@@ -27,6 +27,22 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 
 <hr />
 
+## 🌐 Live Deployments & Public Utilities
+*High-availability services hosted for the developer community.*
+
+### [🛠️ Multi-Utility Hub](https://utility.crimsondevil.qzz.io/)
+**60+ Developer Tools in one place.**
+- **Live:** [utility.crimsondevil.qzz.io](https://utility.crimsondevil.qzz.io/)
+- **Repo:** [nextjs-utility-app](https://github.com/CrimsonDevil333333/nextjs-utility-app)
+- **Features:** Unit converters, formatters, encoders, and specialized dev-utilities. Built with Next.js for maximum performance.
+
+### [📄 PDF Architect](https://pdf-editor.crimsondevil.qzz.io/)
+**Web-based PDF manipulation suite.**
+- **Live:** [pdf-editor.crimsondevil.qzz.io](https://pdf-editor.crimsondevil.qzz.io/)
+- **Utility:** Secure, client-side PDF editing, merging, and transformation tools.
+
+<hr />
+
 ## 🏆 The Pinnacle: Open Source Flagships
 *The absolute best of my work, built for scale and production use.*
 
@@ -41,36 +57,14 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 - **Impact:** Mitigates AI misinformation by cross-referencing agent claims against trusted databases.
 - **Features:** Real-time verification dashboard, confidence scoring, and high-velocity backend.
 
-### [🎭 FaceTranscript](https://github.com/CrimsonDevil333333/FaceTranscript)
-**Advanced Computer Vision for identity and emotion analysis.**
-- **Utility:** A specialized Python package that identifies users and maps emotional states in real-time.
-- **Focus:** Bridging the gap between physical identity and digital transcription.
-
 ### [📊 Next.js System Monitor](https://github.com/CrimsonDevil333333/Nextjs-system-monitor-dashboard)
 **Enterprise-level observability for local and remote infrastructure.**
 - **Dashboard:** Sleek, high-performance UI for real-time vitals, disk I/O, and process tracking.
 - **Stack:** Next.js, Tailwind CSS, high-frequency WebSocket telemetery.
 
-### [⚙️ Azure DLQ Automatic Retry](https://github.com/CrimsonDevil333333/Azure-DLQ-Automatic-Retry)
-**Mission-critical infrastructure-as-code for Azure messaging.**
-- **Solution:** Fully automated recovery and re-processing for Dead Letter Queues.
-- **Quality:** Designed for zero-downtime enterprise environments.
-
-<hr />
-
-## 🌟 Specialized Ecosystems
-*A curated selection of 50+ projects across AI, Web, and Cloud.*
-
-### [🤖 Agentic & Intelligence](https://github.com/CrimsonDevil333333?tab=repositories&q=topic:ai)
-*   **[PrivacyGuard API](https://github.com/CrimsonDevil333333/privacy-guard)**: Secure PII anonymization service for sensitive agent workflows.
-*   **[NLP-Notebook-Collection](https://github.com/CrimsonDevil333333/NLP-Notebook-Collection)**: Deep-dive research suite into semantic patterns and tokenization.
-*   **[Genshin-Impact-Chat-Bot](https://github.com/CrimsonDevil333333/Genshin-Impact-Chat-Bot)**: Specialized conversational agent for community retrieval.
-
-### [🌐 Cloud & Utilities](https://github.com/CrimsonDevil333333?tab=repositories&q=topic:automation)
-*   **[Python-Function-App-V2](https://github.com/CrimsonDevil333333/Python-Function-App-V2)**: Production-ready serverless templates for scalable Python backends.
-*   **[Molt-Pulse](https://github.com/CrimsonDevil333333/Molt-Pulse)**: Vibe-check CLI for instantaneous system observability.
-*   **[File-Janitor](https://github.com/CrimsonDevil333333/File-Janitor)**: Automated lifecycle management for workspace directories.
-*   **[Switch-Utils](https://github.com/CrimsonDevil333333/Switch-Utils)**: The "Swiss Army Knife" (SAK) of system utilities.
+### [🎭 FaceTranscript](https://github.com/CrimsonDevil333333/FaceTranscript)
+**Advanced Computer Vision for identity and emotion analysis.**
+- **Utility:** A specialized Python package that identifies users and maps emotional states in real-time.
 
 <hr />
 
@@ -89,13 +83,11 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 ## 📊 Vitals
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=CrimsonDevil333333&show_icons=true&theme=cobalt&hide_border=true&count_private=true" alt="Stats" />
+  <img src="https://github-readme-stats.vercel.app/api?username=CrimsonDevil333333&show_icons=true&theme=cobalt&hide_border=true&count_private=true" alt="Satyaa's GitHub Stats" />
   <br/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=CrimsonDevil333333&layout=compact&theme=cobalt&hide_border=true" alt="Langs" />
-</div>
-
-<div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=CrimsonDevil333333&theme=cobalt&hide_border=true" alt="Streak" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=CrimsonDevil333333&layout=compact&theme=cobalt&hide_border=true" alt="Top Languages" />
+  <br/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=CrimsonDevil333333&theme=cobalt&hide_border=true" alt="Contribution Streak" />
 </div>
 
 <hr />
