@@ -95,12 +95,12 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 
 ## 📊 Vitals
 
-<div align=\"center\">
-  <img src=\"https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=CrimsonDevil333333&theme=cobalt\" alt=\"Profile Details\" />
+<div align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=CrimsonDevil333333&theme=cobalt" alt="Profile Details" />
   <br/>
-  <img src=\"https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=CrimsonDevil333333&theme=cobalt\" alt=\"Most Used Languages\" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=CrimsonDevil333333&theme=cobalt" alt="Most Used Languages" />
   <br/>
-  <img src=\"https://github-profile-summary-cards.vercel.app/api/cards/stats?username=CrimsonDevil333333&theme=cobalt\" alt=\"Overall Stats\" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=CrimsonDevil333333&theme=cobalt" alt="Overall Stats" />
 </div>
 
 <hr />
