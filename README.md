@@ -46,11 +46,21 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 ## 🏆 The Pinnacle: Open Source Flagships
 *The absolute best of my work, built for scale and production use.*
 
+### [🖥️ Ops-Dashboard](https://github.com/CrimsonDevil333333/ops-dashboard)
+**Next-level open source command center for infrastructure.**
+- **Impact:** A high-performance dashboard providing 360° visibility into system vitals, Docker containers, and workspace health.
+- **Innovation:** Real-time alerting and deep-metric aggregation designed for mission-critical server environments.
+
 ### [🦞 DevLog CLI](https://github.com/CrimsonDevil333333/dev-log-cli)
 **The definitive minimalist journaling ecosystem for developers and AI agents.** 
 - **Production Grade:** v3.0.0, available on [PyPI](https://pypi.org/project/dev-log-cli/).
 - **AI Ready:** Official OpenClaw Skill live on [ClawHub](https://clawhub.com/skills/devlog-skill).
 - **Tech:** SQLite FTS5, Rich TUI Heatmaps, Interactive Sync/Export.
+
+### [🛠️ Sheetsmith](https://github.com/CrimsonDevil333333/sheetsmith)
+**Advanced Pandas-powered data analytics for AI Agents.**
+- **Skill:** An OpenClaw-native skill that empowers agents to perform professional CSV/Excel manipulation, filtering, and transformation autonomously.
+- **Utility:** Standardizing high-fidelity data processing within agentic workflows.
 
 ### [🕵️‍♂️ TruthFilter Relay](https://github.com/CrimsonDevil333333/truth-filter-relay)
 **A high-integrity fact-checking API for the agentic era.**
@@ -58,8 +68,13 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 
 <hr />
 
-## ⚡ System & Lifecycle Utilities
-*Specialized tools for infrastructure efficiency and workflow automation.*
+## 🦀 High-Performance Systems & Utilities
+*Rust-powered and infrastructure-focused utilities for extreme efficiency.*
+
+### [📝 Activity-Logger (Rust)](https://github.com/CrimsonDevil333333/Activity-Logger)
+**Ultra-lightweight, high-fidelity system telemetry.**
+- **Performance:** Built with **Rust** for near-zero overhead.
+- **Capability:** Tracks granular activity including key logging and screen metadata for comprehensive performance auditing and security forensics.
 
 ### [🧹 File-Janitor](https://github.com/CrimsonDevil333333/File-Janitor)
 **Automated lifecycle management for workspace directories.**
@@ -72,19 +87,16 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 ### [⌨️ Command-Line-Helper](https://github.com/CrimsonDevil333333/command-line-helper)
 **Intelligent CLI acceleration for complex terminal workflows.**
 
-### [📝 Activity-Logger](https://github.com/CrimsonDevil333333/Activity-Logger)
-**High-frequency event tracking and log aggregation.**
-
 <hr />
 
 ## 🛠️ Mastery Stack
 
 | Domain | Expertise |
 | :--- | :--- |
-| **Languages** | Python, TypeScript, **Java, Rust, .NET (C#)**, SQL, C |
+| **Languages** | Python, TypeScript, **Rust**, Java, .NET (C#), SQL, C |
 | **Backend** | **Spring Boot, Quarkus**, FastAPI, Node.js, Bun, Distributed Systems, Serverless |
 | **Frontend** | React, Next.js, Tailwind CSS, PyQt5 |
-| **AI/ML** | Autonomous Agents (OpenClaw), NLP, Structured Memory |
+| **AI/ML** | Autonomous Agents (OpenClaw), NLP, Structured Memory, **Agent Skills** |
 | **Ops** | Docker, Git, Azure Cloud, Linux System Architecture, CI/CD |
 
 <hr />
