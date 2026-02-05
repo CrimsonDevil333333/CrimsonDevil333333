@@ -55,12 +55,6 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 ### [🕵️‍♂️ TruthFilter Relay](https://github.com/CrimsonDevil333333/truth-filter-relay)
 **A high-integrity fact-checking API for the agentic era.**
 - **Impact:** Mitigates AI misinformation by cross-referencing agent claims against trusted databases.
-- **Features:** Real-time verification dashboard, confidence scoring, and high-velocity backend.
-
-### [📊 Next.js System Monitor](https://github.com/CrimsonDevil333333/Nextjs-system-monitor-dashboard)
-**Enterprise-level observability for local and remote infrastructure.**
-- **Dashboard:** Sleek, high-performance UI for real-time vitals, disk I/O, and process tracking.
-- **Stack:** Next.js, Tailwind CSS, high-frequency WebSocket telemetery.
 
 ### [🎭 FaceTranscript](https://github.com/CrimsonDevil333333/FaceTranscript)
 **Advanced Computer Vision for identity and emotion analysis.**
@@ -73,23 +67,17 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 
 ### [🧹 File-Janitor](https://github.com/CrimsonDevil333333/File-Janitor)
 **Automated lifecycle management for workspace directories.**
-- **Impact:** Prevents storage bloat by intelligently cleaning system logs, temporary build files, and orphaned artifacts.
+- **Impact:** Prevents storage bloat by intelligently cleaning system logs and orphaned artifacts.
 
 ### [🔄 Azure DLQ Auto-Retry](https://github.com/CrimsonDevil333333/Azure-DLQ-Automatic-Retry)
 **Mission-critical infrastructure-as-code for Azure messaging.**
-- **Solution:** Fully automated recovery and re-processing for Dead Letter Queues in enterprise environments.
+- **Solution:** Fully automated recovery and re-processing for Dead Letter Queues.
 
 ### [⌨️ Command-Line-Helper](https://github.com/CrimsonDevil333333/command-line-helper)
 **Intelligent CLI acceleration for complex terminal workflows.**
-- **Utility:** A wrapper designed to streamline repetitive sysadmin and dev commands into high-velocity shorthands.
 
 ### [📝 Activity-Logger](https://github.com/CrimsonDevil333333/Activity-Logger)
 **High-frequency event tracking and log aggregation.**
-- **Capability:** Captures granular system and developer activity for performance auditing and productivity metrics.
-
-### [🌡️ Molt-Pulse](https://github.com/CrimsonDevil333333/Molt-Pulse)
-**Modern emoji-driven system observability CLI.**
-- **Vibe:** Instantaneous assessment of server health, vitals, and environment stability.
 
 <hr />
 
@@ -97,22 +85,22 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 
 | Domain | Expertise |
 | :--- | :--- |
-| **Languages** | Python (FastAPI, PyQt5), TypeScript (Node.js, Bun), SQL, C |
-| **Backend** | Distributed Systems, Serverless (Azure), Event-Driven Architecture |
-| **Frontend** | React, Next.js, Tailwind CSS, Advanced Dashboard Design |
+| **Languages** | Python, TypeScript, **Java, Rust, .NET (C#)**, SQL, C |
+| **Backend** | **Spring Boot, Quarkus**, FastAPI, Node.js, Bun, Distributed Systems, Serverless |
+| **Frontend** | React, Next.js, Tailwind CSS, PyQt5 |
 | **AI/ML** | Autonomous Agents (OpenClaw), Computer Vision, NLP, Structured Memory |
-| **Ops** | Docker, Git, Linux System Architecture, Automated CI/CD, IaC |
+| **Ops** | Docker, Git, Azure Cloud, Linux System Architecture, CI/CD |
 
 <hr />
 
 ## 📊 Vitals
 
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=CrimsonDevil333333&show_icons=true&theme=cobalt&hide_border=true&count_private=true" alt="Satyaa's GitHub Stats" />
+<div align=\"center\">
+  <img src=\"https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=CrimsonDevil333333&theme=cobalt\" alt=\"Profile Details\" />
   <br/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=CrimsonDevil333333&layout=compact&theme=cobalt&hide_border=true" alt="Top Languages" />
+  <img src=\"https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=CrimsonDevil333333&theme=cobalt\" alt=\"Most Used Languages\" />
   <br/>
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=CrimsonDevil333333&theme=cobalt&hide_border=true" alt="Contribution Streak" />
+  <img src=\"https://github-profile-summary-cards.vercel.app/api/cards/stats?username=CrimsonDevil333333&theme=cobalt\" alt=\"Overall Stats\" />
 </div>
 
 <hr />
