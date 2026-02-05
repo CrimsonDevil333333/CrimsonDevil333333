@@ -56,10 +56,6 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 **A high-integrity fact-checking API for the agentic era.**
 - **Impact:** Mitigates AI misinformation by cross-referencing agent claims against trusted databases.
 
-### [🎭 FaceTranscript](https://github.com/CrimsonDevil333333/FaceTranscript)
-**Advanced Computer Vision for identity and emotion analysis.**
-- **Utility:** A specialized Python package that identifies users and maps emotional states in real-time.
-
 <hr />
 
 ## ⚡ System & Lifecycle Utilities
@@ -88,7 +84,7 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 | **Languages** | Python, TypeScript, **Java, Rust, .NET (C#)**, SQL, C |
 | **Backend** | **Spring Boot, Quarkus**, FastAPI, Node.js, Bun, Distributed Systems, Serverless |
 | **Frontend** | React, Next.js, Tailwind CSS, PyQt5 |
-| **AI/ML** | Autonomous Agents (OpenClaw), Computer Vision, NLP, Structured Memory |
+| **AI/ML** | Autonomous Agents (OpenClaw), NLP, Structured Memory |
 | **Ops** | Docker, Git, Azure Cloud, Linux System Architecture, CI/CD |
 
 <hr />
