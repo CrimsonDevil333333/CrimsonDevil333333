@@ -68,6 +68,31 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 
 <hr />
 
+## ⚡ System & Lifecycle Utilities
+*Specialized tools for infrastructure efficiency and workflow automation.*
+
+### [🧹 File-Janitor](https://github.com/CrimsonDevil333333/File-Janitor)
+**Automated lifecycle management for workspace directories.**
+- **Impact:** Prevents storage bloat by intelligently cleaning system logs, temporary build files, and orphaned artifacts.
+
+### [🔄 Azure DLQ Auto-Retry](https://github.com/CrimsonDevil333333/Azure-DLQ-Automatic-Retry)
+**Mission-critical infrastructure-as-code for Azure messaging.**
+- **Solution:** Fully automated recovery and re-processing for Dead Letter Queues in enterprise environments.
+
+### [⌨️ Command-Line-Helper](https://github.com/CrimsonDevil333333/command-line-helper)
+**Intelligent CLI acceleration for complex terminal workflows.**
+- **Utility:** A wrapper designed to streamline repetitive sysadmin and dev commands into high-velocity shorthands.
+
+### [📝 Activity-Logger](https://github.com/CrimsonDevil333333/Activity-Logger)
+**High-frequency event tracking and log aggregation.**
+- **Capability:** Captures granular system and developer activity for performance auditing and productivity metrics.
+
+### [🌡️ Molt-Pulse](https://github.com/CrimsonDevil333333/Molt-Pulse)
+**Modern emoji-driven system observability CLI.**
+- **Vibe:** Instantaneous assessment of server health, vitals, and environment stability.
+
+<hr />
+
 ## 🛠️ Mastery Stack
 
 | Domain | Expertise |
