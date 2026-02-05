@@ -77,8 +77,9 @@ I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and 
 - **Capability:** Tracks granular activity including key logging and screen metadata for comprehensive performance auditing and security forensics.
 
 ### [🧹 File-Janitor](https://github.com/CrimsonDevil333333/File-Janitor)
-**Automated lifecycle management for workspace directories.**
-- **Impact:** Prevents storage bloat by intelligently cleaning system logs and orphaned artifacts.
+**Hashing-based duplicate file discovery and system cleanup.**
+- **Impact:** Identifies duplicate images, videos, and documents by comparing internal data hashes, ensuring cleanup even if filenames differ.
+- **Min-Maxing:** Built for high-efficiency storage management in resource-constrained or high-volume environments.
 
 ### [🔄 Azure DLQ Auto-Retry](https://github.com/CrimsonDevil333333/Azure-DLQ-Automatic-Retry)
 **Mission-critical infrastructure-as-code for Azure messaging.**
