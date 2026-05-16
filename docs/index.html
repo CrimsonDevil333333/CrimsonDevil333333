@@ -4,64 +4,188 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Satyaa Goyal – Portfolio Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'cyber-pink': '#ff00ff',
+            'cyber-cyan': '#00ffff',
+            'cyber-bg': '#0d0d0d',
+            'cyber-card': '#1a1a1a',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0d0d0d; color: #e0e0e0; }
+    .glass-card {
+      background: rgba(26, 26, 26, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 0, 255, 0.2);
+      border-radius: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    .glass-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(255, 0, 255, 0.15);
+      border-color: rgba(0, 255, 255, 0.5);
+    }
+    .badge {
+      background: #333;
+      color: #ff00ff;
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+  </style>
 </head>
-<body>
-  <header>
-    <img src="https://avatars.githubusercontent.com/u/49252920?v=4" alt="Satyaa Goyal" class="avatar">
-    <h1>Portfolio Dashboard</h1>
-    <p>Satyaa Goyal (<a href="https://github.com/CrimsonDevil333333">@CrimsonDevil333333</a>)</p>
-    <p class="subtitle">Full-Stack Developer, AI/self-hosting enthusiast, Raspberry Pi tinkerer</p>
+<body class="min-h-screen">
+  <header class="text-center py-12 px-4 bg-gradient-to-b from-cyber-pink to-cyber-cyan text-white">
+    <img src="https://avatars.githubusercontent.com/u/49252920?v=4" alt="Satyaa Goyal" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-cyber-bg">
+    <h1 class="text-4xl font-bold mb-2 text-white">Satyaa Goyal</h1>
+    <p class="text-lg text-white opacity-90">Full-Stack Developer, AI/self-hosting enthusiast, Raspberry Pi tinkerer</p>
+    <p class="text-sm mt-2">@CrimsonDevil333333</p>
   </header>
-  <main>
-    <p id="summary" class="summary"></p>
-    <div id="cards"></div>
+
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 text-center">
+      <div class="glass-card p-6">
+        <div class="text-3xl font-bold text-cyber-cyan" id="total-repos">0</div>
+        <div class="text-sm uppercase tracking-widest text-gray-400">Repositories</div>
+      </div>
+      <div class="glass-card p-6">
+        <div class="text-3xl font-bold text-cyber-cyan" id="top-lang">-</div>
+        <div class="text-sm uppercase tracking-widest text-gray-400">Top Language</div>
+      </div>
+      <div class="glass-card p-6">
+        <div class="text-3xl font-bold text-cyber-pink" id="total-updated">-</div>
+        <div class="text-sm uppercase tracking-widest text-gray-400">Recent Updates (30d)</div>
+      </div>
+      <div class="glass-card p-6">
+        <div class="text-3xl font-bold text-cyber-cyan" id="account-age">-</div>
+        <div class="text-sm uppercase tracking-widest text-gray-400">Years on GitHub</div>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="mb-8">
+      <input type="text" id="search" placeholder="Search repositories..." class="w-full p-4 rounded-lg bg-cyber-card border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyber-pink focus:border-transparent">
+    </div>
+
+    <!-- Grid -->
+    <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
   </main>
-  <footer>
-    <p>© <span id="year"></span> Satyaa Goyal | Managed by Clawdy 🐱</p>
+
+  <footer class="text-center py-8 text-gray-500 text-sm">
+    <p>© <span id="year"></span> Satyaa Goyal | Built with Clawdy 🐱</p>
   </footer>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    fetch('curated_repos.json')
-      .then(r => {
-        if (!r.ok) throw new Error('Failed to load repo data');
-        return r.json();
-      })
-      .then(data => {
-        // Stats
-        const totalRepos = data.length;
-        const totalStars = data.reduce((sum, r) => sum + (Number(r.stars) || 0), 0);
-        const langCounts = {};
-        data.forEach(r => {
-          const lang = r.language || 'Unknown';
-          langCounts[lang] = (langCounts[lang] || 0) + 1;
-        });
-        const topLang = Object.entries(langCounts).sort((a,b) => b[1] - a[1])[0][0];
-        document.getElementById('summary').innerHTML = `<strong>${totalRepos} Repositories</strong> • <strong>${totalStars} Total Stars</strong> • <strong>Top Language: ${topLang}</strong>`;
 
-        // Cards in a grid
-        const container = document.getElementById('cards');
-        data.forEach(repo => {
-          const card = document.createElement('div');
-          card.className = 'card';
-          const name = repo.name;
-          const url = `https://github.com/CrimsonDevil333333/${encodeURIComponent(name)}`;
-          const desc = repo.description || '';
-          const lang = repo.language || 'Unknown';
-          const stars = repo.stars || 0;
-          card.innerHTML = `
-            <h3><a href="${url}" target="_blank">${name}</a></h3>
-            ${desc ? `<p>${desc}</p>` : ''}
-            <span class="badge">${lang}</span>
-            <span class="stars">⭐ ${stars}</span>
-          `;
-          container.appendChild(card);
-        });
-      })
-      .catch(err => {
+    async function loadData() {
+      try {
+        const resp = await fetch('curated_repos.json');
+        if (!resp.ok) throw new Error('Failed to load repo data');
+        return await resp.json();
+      } catch (err) {
         console.error(err);
-        document.getElementById('cards').innerHTML = '<p style="color:red;">Error loading portfolio data.</p>';
+        document.getElementById('cards').innerHTML = '<p class="text-red-500">Failed to load portfolio data.</p>';
+        return [];
+      }
+    }
+
+    function timeAgo(dateStr) {
+      const date = new Date(dateStr);
+      const seconds = Math.floor((new Date() - date) / 1000);
+      const intervals = [
+        { label: 'year', seconds: 31536000 },
+        { label: 'month', seconds: 2592000 },
+        { label: 'day', seconds: 86400 },
+        { label: 'hour', seconds: 3600 },
+        { label: 'minute', seconds: 60 }
+      ];
+      for (let i of intervals) {
+        const interval = Math.floor(seconds / i.seconds);
+        if (interval >= 1) {
+          return `${interval} ${i.label}${interval > 1 ? 's' : ''} ago`;
+        }
+      }
+      return 'just now';
+    }
+
+    function renderStats(data) {
+      const totalRepos = data.length;
+      document.getElementById('total-repos').textContent = totalRepos;
+
+      // Top language
+      const langCounts = {};
+      data.forEach(r => { const l = r.language || 'Unknown'; langCounts[l] = (langCounts[l] || 0) + 1; });
+      const topLang = Object.entries(langCounts).sort((a,b) => b[1] - a[1])[0][0];
+      document.getElementById('top-lang').textContent = topLang;
+
+      // Recent updates: repos updated in last 30 days
+      const thirtyDaysAgo = new Date();
+      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+      const recent = data.filter(r => new Date(r.pushed_at) >= thirtyDaysAgo).length;
+      document.getElementById('total-updated').textContent = recent;
+
+      // Account age from user profile? Hardcode join year 2019
+      const joinYear = 2019;
+      const currentYear = new Date().getFullYear();
+      document.getElementById('account-age').textContent = currentYear - joinYear;
+    }
+
+    function renderCards(data) {
+      const container = document.getElementById('cards');
+      container.innerHTML = '';
+      data.forEach(repo => {
+        const card = document.createElement('div');
+        card.className = 'glass-card p-6 flex flex-col justify-between';
+        const name = repo.name;
+        const url = `https://github.com/CrimsonDevil333333/${encodeURIComponent(name)}`;
+        const desc = repo.description || '';
+        const lang = repo.language || 'Unknown';
+        const pushed = repo.pushed_at || repo.updated_at || '';
+        const timeAgoStr = pushed ? timeAgo(pushed) : '';
+        card.innerHTML = `
+          <div>
+            <h3 class="text-xl font-semibold mb-2 text-cyber-pink"><a href="${url}" target="_blank" class="hover:underline">${name}</a></h3>
+            ${desc ? `<p class="text-gray-300 mb-4 line-clamp-3">${desc}</p>` : '<p class="text-gray-500 mb-4 italic">No description</p>'}
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="badge">${lang}</span>
+            ${timeAgoStr ? `<span class="text-xs text-gray-500">Updated ${timeAgoStr}</span>` : ''}
+          </div>
+        `;
+        container.appendChild(card);
       });
+    }
+
+    // Search filter
+    document.getElementById('search').addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      const cards = document.querySelectorAll('#cards .glass-card');
+      cards.forEach(card => {
+        const name = card.querySelector('h3').textContent.toLowerCase();
+        const desc = card.querySelector('p').textContent.toLowerCase();
+        card.style.display = (name.includes(term) || desc.includes(term)) ? '' : 'none';
+      });
+    });
+
+    (async () => {
+      const data = await loadData();
+      renderStats(data);
+      renderCards(data);
+    })();
   </script>
 </body>
 </html>

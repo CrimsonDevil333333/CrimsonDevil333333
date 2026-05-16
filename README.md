@@ -1,134 +1,127 @@
-# Hi, I'm Satyaa Goyal 🐱
+<div align="center">
+  <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/>
+  <h1>Satyaa</h1>
+  <p><b>Fully AI-Enabled Full-Stack Software Developer | AI Agent Architect | Production Engineering</b></p>
 
-*Full-Stack Developer, AI/self-hosting enthusiast, Raspberry Pi tinkerer*
+  <div>
+    <a href="https://www.linkedin.com/in/satyaa-g-b4b399111/">
+      <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
+    </a>
+    <a href="https://twitter.com/satyaa_goyal">
+      <img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter"/>
+    </a>
+    <a href="https://moltbook.com/u/SatyaaClawdy">
+      <img src="https://img.shields.io/badge/Moltbook-🦞-red?style=for-the-badge" alt="Moltbook"/>
+    </a>
+  </div>
+</div>
 
----
+<hr />
 
-## Featured Projects
+## 🚀 Professional Profile
+I am a **Fully AI-Enabled Full-Stack Developer** specializing in the design and implementation of autonomous agentic systems and highly efficient production software. With over **50+ projects developed**, I focus on building, testing, and deploying at extreme velocities while maintaining strict security and resource "min-maxing."
 
-<table>
-<tr>
-<td valign="top" width="50%">
+- 🧠 **Architectural Focus:** Autonomous Agent Memory (FTS/Semantic), Event-Driven Cloud Scalability, and Real-time Observability.
+- ⚡ **Core Philosophy:** "Code is a Liability, Utilities are Assets." I build minimalist tools that solve complex systemic problems.
+- 📈 **Velocity:** From concept to production-ready PyPI package in hours, not weeks.
 
-### [openclaw-android-setup](https://github.com/CrimsonDevil333333/openclaw-android-setup)
-- **Language:** Shell ![Shell](https://img.shields.io/badge/-Shell-4EAA25?style=flat)
-- **Stars:** 6
+<hr />
 
-</td>
-<td valign="top" width="50%">
+## 🌐 Live Deployments & Public Utilities
+*High-availability services hosted for the developer community.*
 
-### [Discord.py-Embed-Maker-](https://github.com/CrimsonDevil333333/Discord.py-Embed-Maker-)
-A simple program to make embeds for your discord bot easily.
-- **Language:** Python ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat)
-- **Stars:** 3
+### [🛠️ Multi-Utility Hub](https://utility.crimsondevil.qzz.io/)
+**60+ Developer Tools in one place.**
+- **Live:** [utility.crimsondevil.qzz.io](https://utility.crimsondevil.qzz.io/)
+- **Repo:** [nextjs-utility-app](https://github.com/CrimsonDevil333333/nextjs-utility-app)
+- **Features:** Unit converters, formatters, encoders, and specialized dev-utilities. Built with Next.js for maximum performance.
 
-</td>
-</tr>
-<tr>
-<td valign="top" width="50%">
+### [📄 PDF Architect](https://pdf-editor.crimsondevil.qzz.io/)
+**Web-based PDF manipulation suite.**
+- **Live:** [pdf-editor.crimsondevil.qzz.io](https://pdf-editor.crimsondevil.qzz.io/)
+- **Utility:** Secure, client-side PDF editing, merging, and transformation tools.
 
-### [nextjs-utility-app](https://github.com/CrimsonDevil333333/nextjs-utility-app)
-- **Language:** TypeScript ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat)
-- **Stars:** 2
+<hr />
 
-</td>
-<td valign="top" width="50%">
+## 🏆 The Pinnacle: Open Source Flagships
+*The absolute best of my work, built for scale and production use.*
 
-### [project-compass](https://github.com/CrimsonDevil333333/project-compass)
-- **Language:** JavaScript ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat)
-- **Stars:** 1
+### [🖥️ Ops-Dashboard](https://github.com/CrimsonDevil333333/ops-dashboard)
+**Next-level open source command center for infrastructure.**
+- **Impact:** A high-performance dashboard providing 360° visibility into system vitals, Docker containers, and workspace health.
+- **Innovation:** Real-time alerting and deep-metric aggregation designed for mission-critical server environments.
 
-</td>
-</tr>
-<tr>
-<td valign="top" width="50%">
+### [🦞 DevLog CLI](https://github.com/CrimsonDevil333333/dev-log-cli)
+**The definitive minimalist journaling ecosystem for developers and AI agents.** 
+- **Production Grade:** v3.0.0, available on [PyPI](https://pypi.org/project/dev-log-cli/).
+- **AI Ready:** Official OpenClaw Skill live on [ClawHub](https://clawhub.com/skills/devlog-skill).
+- **Tech:** SQLite FTS5, Rich TUI Heatmaps, Interactive Sync/Export.
 
-### [molt-cipher-bridge](https://github.com/CrimsonDevil333333/molt-cipher-bridge)
-- **Language:** Python ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat)
-- **Stars:** 1
+### [🛠️ Sheetsmith](https://github.com/CrimsonDevil333333/sheetsmith)
+**Advanced Pandas-powered data analytics for AI Agents.**
+- **Skill:** An OpenClaw-native skill that empowers agents to perform professional CSV/Excel manipulation, filtering, and transformation autonomously.
+- **Utility:** Standardizing high-fidelity data processing within agentic workflows.
 
-</td>
-<td valign="top" width="50%">
+### [🕵️‍♂️ TruthFilter Relay](https://github.com/CrimsonDevil333333/truth-filter-relay)
+**A high-integrity fact-checking API for the agentic era.**
+- **Impact:** Mitigates AI misinformation by cross-referencing agent claims against trusted databases.
 
-### [Youtube-downloader-PyQt5](https://github.com/CrimsonDevil333333/Youtube-downloader-PyQt5)
-A youtube video downloader using qt and yt-dl
-- **Language:** Python ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat)
-- **Stars:** 1
+<hr />
 
-</td>
-</tr>
-<tr>
-<td valign="top" width="50%">
+## 🦀 High-Performance Systems & Utilities
+*Rust-powered and infrastructure-focused utilities for extreme efficiency.*
 
-### [Sago-Bot-ver2.0](https://github.com/CrimsonDevil333333/Sago-Bot-ver2.0)
-Enhanced version of sago bot
-- **Language:** Python ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat)
-- **Stars:** 1
+### [📝 Activity-Logger (Rust)](https://github.com/CrimsonDevil333333/Activity-Logger)
+**Ultra-lightweight, high-fidelity system telemetry.**
+- **Performance:** Built with **Rust** for near-zero overhead.
+- **Capability:** Tracks granular activity including key logging and screen metadata for comprehensive performance auditing and security forensics.
 
-</td>
-<td valign="top" width="50%">
+### [🧹 File-Janitor](https://github.com/CrimsonDevil333333/File-Janitor)
+**Hashing-based duplicate file discovery and system cleanup.**
+- **Impact:** Identifies duplicate images, videos, and documents by comparing internal data hashes, ensuring cleanup even if filenames differ.
+- **Min-Maxing:** Built for high-efficiency storage management in resource-constrained or high-volume environments.
 
-### [Python-Bot-sago-bot](https://github.com/CrimsonDevil333333/Python-Bot-sago-bot)
-It is a bot based on python .
-- **Language:** Python ![Python](https://img.shields.io/badge/-Python-3776AB?style=flat)
-- **Stars:** 1
+### [🔄 Azure DLQ Auto-Retry](https://github.com/CrimsonDevil333333/Azure-DLQ-Automatic-Retry)
+**Mission-critical infrastructure-as-code for Azure messaging.**
+- **Solution:** Fully automated recovery and re-processing for Dead Letter Queues.
 
-</td>
-</tr>
-<tr>
-<td valign="top" width="50%">
+### [⌨️ Command-Line-Helper](https://github.com/CrimsonDevil333333/command-line-helper)
+**Intelligent CLI acceleration for complex terminal workflows.**
 
-### [Data-analysis-example-using-pandas](https://github.com/CrimsonDevil333333/Data-analysis-example-using-pandas)
-Its an small example using pandas to clear basics of pandas if anyone want to see how one can become data analyst expert.
-- **Language:** Jupyter Notebook ![Jupyter Notebook](https://img.shields.io/badge/-Jupyter%20Notebook-F37626?style=flat)
-- **Stars:** 1
+<hr />
 
-</td>
-<td valign="top" width="50%">
+## 🛠️ Mastery Stack
 
-### [Lovers-Game](https://github.com/CrimsonDevil333333/Lovers-Game)
-2D GAME
-- **Language:** ShaderLab ![ShaderLab](https://img.shields.io/badge/-ShaderLab-FFFFFF?style=flat)
-- **Stars:** 1
+| Domain | Expertise |
+| :--- | :--- |
+| **Languages** | Python, TypeScript, **Rust**, Java, .NET (C#), SQL, C |
+| **Backend** | **Spring Boot, Quarkus**, FastAPI, Node.js, Bun, Distributed Systems, Serverless |
+| **Frontend** | React, Next.js, Tailwind CSS, PyQt5 |
+| **AI/ML** | Autonomous Agents (OpenClaw), NLP, Structured Memory, **Agent Skills** |
+| **Ops** | Docker, Git, Azure Cloud, Linux System Architecture, CI/CD |
 
-</td>
-</tr>
-<tr>
-<td valign="top" width="50%">
+<hr />
 
-### [raspberry-pi-toolbox](https://github.com/CrimsonDevil333333/raspberry-pi-toolbox)
-🐰 A collection of fun and useful shell scripts for Raspberry Pi with a dynamic menu system.
-- **Language:** Shell ![Shell](https://img.shields.io/badge/-Shell-4EAA25?style=flat)
-- **Stars:** 0
+## 📊 Vitals
 
-</td>
-<td valign="top" width="50%">
+<div align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=CrimsonDevil333333&theme=cobalt" alt="Profile Details" />
+  <br/>
+  <table align="center">
+    <tr>
+      <td><img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=CrimsonDevil333333&theme=cobalt" alt="Most Used Languages" /></td>
+      <td><img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=CrimsonDevil333333&theme=cobalt" alt="Overall Stats" /></td>
+    </tr>
+  </table>
+</div>
 
-### [log-oracle](https://github.com/CrimsonDevil333333/log-oracle)
-A CLI log analyzer that filters noise and fuzzy-groups errors to find the 'WTF' moments in your logs.
-- **Language:** JavaScript ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat)
-- **Stars:** 0
+<hr />
 
-</td>
-</tr>
-<tr>
-<td valign="top" colspan="2">
+<div align="center">
+  <sub>Managed by Satyaa & Clawdy 🦞 | 50+ Projects</sub>
+</div>
 
-### [Molt-Pulse](https://github.com/CrimsonDevil333333/Molt-Pulse)
-A modern emoji-driven server health CLI for Pi5.
-- **Language:** JavaScript ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat)
-- **Stars:** 0
-
-</td>
-</tr>
-</table>
-
-> An interactive dashboard is available via GitHub Pages → [docs/index.html](docs/index.html)
 
 ---
 
-### About
-
-I build AI-powered tools and self-hosted utilities for developer productivity. Obsessed with minimalism, performance, and making complex systems feel simple.
-
-Managed by Satyaa & Clawdy 🦞
+> **Portfolio Dashboard:** Explore an interactive showcase of all my repositories with live stats and search: [Open Dashboard](docs/index.html)
