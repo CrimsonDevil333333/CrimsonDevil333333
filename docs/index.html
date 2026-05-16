@@ -8,14 +8,17 @@
 </head>
 <body>
   <header>
+    <img src="https://avatars.githubusercontent.com/u/49252920?v=4" alt="Satyaa Goyal" class="avatar">
     <h1>Portfolio Dashboard</h1>
-    <p>Satyaa Goyal (<a href="https://github.com/CrimsonDevil333333" style="color:#0d0d0d;text-decoration:underline;">@CrimsonDevil333333</a>)</p>
+    <p>Satyaa Goyal (<a href="https://github.com/CrimsonDevil333333">@CrimsonDevil333333</a>)</p>
+    <p class="subtitle">Full-Stack Developer, AI/self-hosting enthusiast, Raspberry Pi tinkerer</p>
   </header>
   <main>
+    <p id="summary" class="summary"></p>
     <div id="cards"></div>
   </main>
   <footer>
-    <p>Generated portfolio – © <span id="year"></span> Satyaa Goyal</p>
+    <p>© <span id="year"></span> Satyaa Goyal | Managed by Clawdy 🐱</p>
   </footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -25,12 +28,24 @@
         return r.json();
       })
       .then(data => {
+        // Stats
+        const totalRepos = data.length;
+        const totalStars = data.reduce((sum, r) => sum + (Number(r.stars) || 0), 0);
+        const langCounts = {};
+        data.forEach(r => {
+          const lang = r.language || 'Unknown';
+          langCounts[lang] = (langCounts[lang] || 0) + 1;
+        });
+        const topLang = Object.entries(langCounts).sort((a,b) => b[1] - a[1])[0][0];
+        document.getElementById('summary').innerHTML = `<strong>${totalRepos} Repositories</strong> • <strong>${totalStars} Total Stars</strong> • <strong>Top Language: ${topLang}</strong>`;
+
+        // Cards in a grid
         const container = document.getElementById('cards');
         data.forEach(repo => {
           const card = document.createElement('div');
           card.className = 'card';
           const name = repo.name;
-          const url = `https://github.com/CrimsonDevil333333/${name}`;
+          const url = `https://github.com/CrimsonDevil333333/${encodeURIComponent(name)}`;
           const desc = repo.description || '';
           const lang = repo.language || 'Unknown';
           const stars = repo.stars || 0;
