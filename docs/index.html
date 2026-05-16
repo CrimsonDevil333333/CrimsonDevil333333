@@ -82,6 +82,13 @@
 
     <!-- Grid -->
     <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+    <!-- Pagination -->
+    <div id="pagination" class="flex justify-center items-center gap-4 mt-8 mb-12">
+      <button id="prevBtn" class="px-4 py-2 bg-cyber-card border border-gray-700 rounded-lg hover:bg-gray-800 disabled:opacity-50 transition">Prev</button>
+      <span id="pageInfo" class="text-sm text-gray-400">Page 1 of 1</span>
+      <button id="nextBtn" class="px-4 py-2 bg-cyber-card border border-gray-700 rounded-lg hover:bg-gray-800 disabled:opacity-50 transition">Next</button>
+    </div>
   </main>
 
   <footer class="text-center py-8 text-gray-500 text-sm">
@@ -91,15 +98,26 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    let allData = [];
+    let currentData = [];
+    let currentPage = 1;
+    const perPage = 12;
+
     async function loadData() {
       try {
         const resp = await fetch('curated_repos.json');
         if (!resp.ok) throw new Error('Failed to load repo data');
-        return await resp.json();
+        let data = await resp.json();
+        // Sort by latest pushed_at descending
+        data.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+        allData = data;
+        currentData = allData;
+        renderStats(allData);
+        renderCards();
+        renderPagination();
       } catch (err) {
         console.error(err);
         document.getElementById('cards').innerHTML = '<p class="text-red-500">Failed to load portfolio data.</p>';
-        return [];
       }
     }
 
@@ -138,16 +156,23 @@
       const recent = data.filter(r => new Date(r.pushed_at) >= thirtyDaysAgo).length;
       document.getElementById('total-updated').textContent = recent;
 
-      // Account age from user profile? Hardcode join year 2019
+      // Account age from join year
       const joinYear = 2019;
       const currentYear = new Date().getFullYear();
       document.getElementById('account-age').textContent = currentYear - joinYear;
     }
 
-    function renderCards(data) {
+    function renderCards() {
       const container = document.getElementById('cards');
       container.innerHTML = '';
-      data.forEach(repo => {
+      const start = (currentPage - 1) * perPage;
+      const end = Math.min(start + perPage, currentData.length);
+      const slice = currentData.slice(start, end);
+      if (slice.length === 0) {
+        container.innerHTML = '<p class="col-span-full text-gray-400">No repositories match your search.</p>';
+        return;
+      }
+      slice.forEach(repo => {
         const card = document.createElement('div');
         card.className = 'glass-card p-6 flex flex-col justify-between';
         const name = repo.name;
@@ -170,21 +195,48 @@
       });
     }
 
+    function renderPagination() {
+      const totalPages = Math.ceil(currentData.length / perPage);
+      document.getElementById('prevBtn').disabled = currentPage === 1;
+      document.getElementById('nextBtn').disabled = currentPage >= totalPages;
+      document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+    }
+
     // Search filter
     document.getElementById('search').addEventListener('input', (e) => {
-      const term = e.target.value.toLowerCase();
-      const cards = document.querySelectorAll('#cards .glass-card');
-      cards.forEach(card => {
-        const name = card.querySelector('h3').textContent.toLowerCase();
-        const desc = card.querySelector('p').textContent.toLowerCase();
-        card.style.display = (name.includes(term) || desc.includes(term)) ? '' : 'none';
-      });
+      const term = e.target.value.toLowerCase().trim();
+      if (term === '') {
+        currentData = allData;
+      } else {
+        currentData = allData.filter(repo => 
+          repo.name.toLowerCase().includes(term) || 
+          (repo.description && repo.description.toLowerCase().includes(term))
+        );
+      }
+      currentPage = 1;
+      renderCards();
+      renderPagination();
+    });
+
+    // Pagination buttons
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderCards();
+        renderPagination();
+      }
+    });
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      const totalPages = Math.ceil(currentData.length / perPage);
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderCards();
+        renderPagination();
+      }
     });
 
     (async () => {
-      const data = await loadData();
-      renderStats(data);
-      renderCards(data);
+      await loadData();
     })();
   </script>
 </body>
