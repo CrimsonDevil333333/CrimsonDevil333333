@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Satyaa Goyal – Portfolio Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Portfolio Dashboard</h1>
+    <p>Satyaa Goyal (<a href="https://github.com/CrimsonDevil333333" style="color:#0d0d0d;text-decoration:underline;">@CrimsonDevil333333</a>)</p>
+  </header>
+  <main>
+    <div id="cards"></div>
+  </main>
+  <footer>
+    <p>Generated portfolio – © <span id="year"></span> Satyaa Goyal</p>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    fetch('curated_repos.json')
+      .then(r => {
+        if (!r.ok) throw new Error('Failed to load repo data');
+        return r.json();
+      })
+      .then(data => {
+        const container = document.getElementById('cards');
+        data.forEach(repo => {
+          const card = document.createElement('div');
+          card.className = 'card';
+          const name = repo.name;
+          const url = `https://github.com/CrimsonDevil333333/${name}`;
+          const desc = repo.description || '';
+          const lang = repo.language || 'Unknown';
+          const stars = repo.stars || 0;
+          card.innerHTML = `
+            <h3><a href="${url}" target="_blank">${name}</a></h3>
+            ${desc ? `<p>${desc}</p>` : ''}
+            <span class="badge">${lang}</span>
+            <span class="stars">⭐ ${stars}</span>
+          `;
+          container.appendChild(card);
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('cards').innerHTML = '<p style="color:red;">Error loading portfolio data.</p>';
+      });
+  </script>
+</body>
+</html>
