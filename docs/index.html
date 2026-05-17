@@ -437,7 +437,6 @@
         grid.appendChild(card);
       }
 
-      // Pagination dots
       const totalPages = Math.ceil(repos.length / itemsPerPage);
       const pagination = document.getElementById('pagination');
       pagination.innerHTML = '';
@@ -451,21 +450,26 @@
         pagination.appendChild(dot);
       }
 
-      // Page info
       document.getElementById('page-info').textContent = totalPages > 0 ? `${page + 1} of ${totalPages}` : '';
     }
 
     async function loadRepos() {
       try {
-        const res = await fetch('curated_repos.json');
-        if (!res.ok) throw new Error('Failed to load repos');
+        const res = await fetch('https://api.github.com/users/CrimsonDevil333333/repos?type=owner&sort=pushed&direction=desc&per_page=100');
+        if (!res.ok) throw new Error('Failed to fetch repos');
         const data = await res.json();
-        // Sort by pushed_at descending (newest first)
-        repos = data.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+        repos = data.map(r => ({
+          name: r.name,
+          description: r.description,
+          language: r.language,
+          stars: r.stargazers_count,
+          forks: r.forks_count,
+          pushed_at: r.pushed_at
+        }));
         renderPage(0);
       } catch (err) {
         console.error(err);
-        document.getElementById('repo-grid').innerHTML = '<p style="color:#8E8E93;grid-column:1/-1;text-align:center;padding:2rem;">Unable to load repositories.</p>';
+        document.getElementById('repo-grid').innerHTML = '<p style="color:#8E8E93;grid-column:1/-1;text-align:center;padding:2rem;">Unable to load repositories. Please try again later.</p>';
       }
     }
 
