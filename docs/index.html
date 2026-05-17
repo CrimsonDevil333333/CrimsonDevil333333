@@ -3,411 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Satyaa Goyal – Portfolio Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Satyaa Goyal – Repositories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'charcoal': '#121212',
-            'sub-charcoal': '#1C1C1E',
-            'accent': '#C5A059',
-            'text-primary': '#FFFFFF',
-            'text-secondary': '#8E8E93',
-            'border-subtle': 'rgba(255,255,255,0.05)',
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-          spacing: {
-            'left-dock': '48px',
-          }
-        },
-      },
-    }
-  </script>
   <style>
     body {
-      background: linear-gradient(180deg, #121212 0%, #1C1C1E 100%);
+      background: #121212;
       color: #e0e0e0;
       font-family: 'Inter', sans-serif;
       margin: 0;
+      padding: 0;
       min-height: 100vh;
     }
-
-    .left-dock {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 48px;
-      height: 100vh;
-      background: rgba(28, 28, 30, 0.6);
-      backdrop-filter: blur(12px);
-      border-right: 1px solid rgba(255,255,255,0.05);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1.5rem 0;
-      gap: 2rem;
-      z-index: 50;
-    }
-
-    .dock-icon {
-      width: 24px;
-      height: 24px;
-      fill: #8E8E93;
-      transition: fill 0.2s ease, transform 0.2s ease;
-      cursor: pointer;
-    }
-
-    .dock-icon:hover {
-      fill: #C5A059;
-      transform: scale(1.1);
-    }
-
-    .main-content {
-      margin-left: 48px;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    .hero {
-      display: flex;
-      min-height: 70vh;
-      position: relative;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 2rem;
-      gap: 3rem;
-      align-items: center;
-      overflow: hidden;
     }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2672&auto=format&fit=crop') center/cover no-repeat;
-      filter: saturate(0.2) contrast(0.9) brightness(0.3);
-      z-index: 0;
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
     }
-
-    .hero-content {
-      position: relative;
-      z-index: 10;
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .hero-text {
-      max-width: 50%;
-      margin-left: 2rem;
-    }
-
-    .hero-title {
-      font-size: 4rem;
-      font-weight: 700;
-      line-height: 1.1;
-      margin: 0 0 1rem 0;
-      color: #FFFFFF;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-subtitle {
-      font-size: 1.25rem;
-      font-weight: 400;
-      color: #8E8E93;
-      margin-bottom: 2rem;
-      letter-spacing: 0.02em;
-    }
-
-    .hero-cta {
-      display: inline-block;
-      padding: 0.75rem 2rem;
-      border: 1px solid rgba(197, 160, 89, 0.4);
-      background: transparent;
-      color: #C5A059;
-      text-transform: uppercase;
+    h1 {
+      font-size: 2rem;
       font-weight: 600;
-      font-size: 0.875rem;
-      letter-spacing: 0.1em;
-      text-decoration: none;
-      transition: all 0.2s ease;
+      margin: 0 0 0.5rem 0;
+      color: #fff;
     }
-
-    .hero-cta:hover {
-      background: rgba(197, 160, 89, 0.12);
-      border-color: rgba(197, 160, 89, 0.8);
-    }
-
-    .section-title {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 600;
+    .bio {
       color: #8E8E93;
-      margin-bottom: 1.5rem;
-      margin-left: 1.5rem;
+      font-size: 1rem;
+      margin: 0;
     }
-
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 1.5rem;
-      padding: 2rem;
     }
-
     .card {
-      background: rgba(28, 28, 30, 0.6);
-      backdrop-filter: blur(10px);
+      background: #1C1C1E;
       border: 1px solid rgba(255,255,255,0.05);
       border-radius: 12px;
       padding: 1.5rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-      border-color: rgba(197, 160, 89, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border-color: rgba(197,160,89,0.3);
     }
-
     .card-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #FFFFFF;
       margin: 0 0 0.5rem 0;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #fff;
     }
-
+    .card-title a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .card-title a:hover {
+      color: #C5A059;
+    }
     .card-desc {
-      font-size: 0.9rem;
-      font-weight: 300;
+      margin: 0 0 1rem 0;
+      font-size: 0.875rem;
       color: #8E8E93;
       line-height: 1.5;
-      margin-bottom: 1rem;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-
     .card-meta {
       display: flex;
-      gap: 1rem;
-      font-size: 0.75rem;
-      color: #8E8E93;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .card-meta span {
-      display: flex;
       align-items: center;
-      gap: 0.25rem;
-    }
-
-    .bottom-dock {
-      margin-top: 4rem;
-      background: rgba(28, 28, 30, 0.6);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-
-    .dock-section h3 {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 600;
-      color: #8E8E93;
-      margin-bottom: 1rem;
-    }
-
-    .dock-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
       gap: 0.75rem;
+      font-size: 0.75rem;
+      color: #8E8E93;
+      flex-wrap: wrap;
     }
-
-    .dock-list li {
-      font-size: 0.9rem;
-      color: #FFFFFF;
-      font-weight: 400;
-      line-height: 1.4;
+    .badge {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
     }
-
-    .pagination-dots {
+    .pagination {
       display: flex;
       justify-content: center;
       gap: 0.75rem;
-      padding: 2rem 0;
+      margin-top: 3rem;
+      padding-bottom: 2rem;
     }
-
     .dot {
-      width: 6px;
-      height: 6px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: rgba(255,255,255,0.2);
       cursor: pointer;
       transition: all 0.2s ease;
     }
-
     .dot.active {
       background: #C5A059;
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       margin: -1px 0;
     }
-
-    .pagination-info {
+    .page-info {
       text-align: center;
+      color: #8E8E93;
       font-size: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .error {
+      text-align: center;
       color: #8E8E93;
-      margin-bottom: 1rem;
-      letter-spacing: 0.05em;
+      padding: 2rem;
     }
-
-    .link-underline {
-      position: relative;
-      text-decoration: none;
-    }
-
-    .link-underline::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: #C5A059;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .link-underline:hover::after,
-    .link-underline.active::after {
-      opacity: 1;
-    }
-
-    .vertical-text {
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #8E8E93;
-      transform: rotate(180deg);
-    }
-
-    @media (max-width: 768px) {
-      .hero-content {
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-      }
-      .hero-text {
-        max-width: 100%;
-        margin-left: 0;
-      }
-      .hero-title {
-        font-size: 2.5rem;
-      }
-      .bottom-dock {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .grid {
-        grid-template-columns: 1fr;
-        padding: 1rem;
-      }
-      .left-dock {
-        width: 40px;
-        padding: 1rem 0;
-        gap: 1.5rem;
-      }
-      .main-content {
-        margin-left: 40px;
-      }
+    @media (max-width: 600px) {
+      .container { padding: 1rem; }
+      .grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <!-- Left Dock -->
-  <nav class="left-dock">
-    <svg class="dock-icon" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-    <svg class="dock-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-    <svg class="dock-icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-    <div class="vertical-text">@satyag</div>
-  </nav>
-
-  <!-- Main Content -->
-  <div class="main-content">
-    <!-- Split Hero Section -->
-    <header class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">Indie Hacker,<br>Full‑Stack Builder.</h1>
-          <p class="hero-subtitle">Satyaa Goyal – Shipping projects with code & caffeine, rooted in Noida.</p>
-          <a href="#repos" class="hero-cta link-underline">View Works</a>
-        </div>
-        <div class="hidden md:block">
-          <!-- Imagery anchor already in background -->
-        </div>
-      </div>
+  <div class="container">
+    <header>
+      <h1>Satyaa Goyal</h1>
+      <p class="bio">Full‑Stack Developer – Building tools & utilities</p>
     </header>
 
-    <!-- Repos Grid -->
-    <main id="repos">
-      <h2 class="section-title">Selected Repositories</h2>
+    <main>
       <div class="grid" id="repo-grid"></div>
     </main>
 
-    <!-- Pagination Dots -->
-    <div class="pagination-info" id="page-info"></div>
-    <div class="pagination-dots" id="pagination"></div>
-
-    <!-- Bottom Dock -->
-    <footer class="bottom-dock">
-      <section class="dock-section">
-        <h3>Events</h3>
-        <ul class="dock-list">
-          <li>Upcoming hackathon – Prague</li>
-          <li>Open‑source maintainer week – Aug</li>
-          <li>Live coding session – Next Fri</li>
-        </ul>
-      </section>
-      <section class="dock-section">
-        <h3>Quick View</h3>
-        <ul class="dock-list">
-          <li>Most starred: Hermes Agent</li>
-          <li>Latest pushed: AI Tweet Generator</li>
-          <li>Most forks: Claude Memory</li>
-        </ul>
-      </section>
-      <section class="dock-section">
-        <h3>News</h3>
-        <ul class="dock-list">
-          <li>New release: v0.8.0 – Hermes</li>
-          <li>Blog post: RAG vs Fine‑tuning</li>
-          <li>Community spotlight: featured</li>
-        </ul>
-      </section>
-    </footer>
+    <div class="page-info" id="page-info"></div>
+    <div class="pagination" id="pagination"></div>
   </div>
 
   <script>
     let repos = [];
-    let itemsPerPage = 5;
+    const itemsPerPage = 5;
     let currentPage = 0;
 
     function formatDate(iso) {
@@ -425,10 +163,10 @@
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-          <h3 class="card-title">${r.name}</h3>
+          <h3 class="card-title"><a href="https://github.com/CrimsonDevil333333/${encodeURIComponent(r.name)}" target="_blank">${r.name}</a></h3>
           <p class="card-desc">${r.description || "No description provided."}</p>
           <div class="card-meta">
-            ${r.language ? `<span class="badge" style="background:rgba(255,255,255,0.08);color:#fff;padding:0.2rem 0.6rem;border-radius:9999px;font-size:0.75rem;margin-right:0.5rem">${r.language}</span>` : ''}
+            ${r.language ? `<span class="badge">${r.language}</span>` : ''}
             <span><span class="material-icons" style="font-size:14px;vertical-align:middle">star</span> ${r.stars}</span>
             <span><span class="material-icons" style="font-size:14px;vertical-align:middle">call_split</span> ${r.forks}</span>
             <span><span class="material-icons" style="font-size:14px;vertical-align:middle">update</span> ${formatDate(r.pushed_at)}</span>
@@ -438,6 +176,8 @@
       }
 
       const totalPages = Math.ceil(repos.length / itemsPerPage);
+      document.getElementById('page-info').textContent = totalPages > 0 ? `${page + 1} of ${totalPages}` : '';
+
       const pagination = document.getElementById('pagination');
       pagination.innerHTML = '';
       for (let d = 0; d < totalPages; d++) {
@@ -449,8 +189,6 @@
         });
         pagination.appendChild(dot);
       }
-
-      document.getElementById('page-info').textContent = totalPages > 0 ? `${page + 1} of ${totalPages}` : '';
     }
 
     async function loadRepos() {
@@ -469,7 +207,7 @@
         renderPage(0);
       } catch (err) {
         console.error(err);
-        document.getElementById('repo-grid').innerHTML = '<p style="color:#8E8E93;grid-column:1/-1;text-align:center;padding:2rem;">Unable to load repositories. Please try again later.</p>';
+        document.getElementById('repo-grid').innerHTML = '<p class="error">Unable to load repositories. Please try again later.</p>';
       }
     }
 
