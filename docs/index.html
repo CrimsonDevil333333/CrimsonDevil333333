@@ -4,94 +4,121 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Satyaa Goyal – Portfolio Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'cyber-pink': '#ff00ff',
-            'cyber-cyan': '#00ffff',
-            'cyber-bg': '#0d0d0d',
-            'cyber-card': '#1a1a1a',
+            'primary': '#ff00ff',
+            'secondary': '#00ffff',
+            'surface': '#1E1E1E',
+            'background': '#121212',
+            'text': '#e0e0e0',
+            'muted': '#a0a0a0',
           },
           fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          }
-        }
-      }
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
     }
   </script>
   <style>
-    body { background-color: #0d0d0d; color: #e0e0e0; }
+    body { background-color: #121212; color: #e0e0e0; }
     .glass-card {
-      background: rgba(26, 26, 26, 0.7);
+      background: rgba(30, 30, 30, 0.85);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 0, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 1rem;
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
     .glass-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(255, 0, 255, 0.15);
-      border-color: rgba(0, 255, 255, 0.5);
+      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.12);
+      border-color: rgba(0, 255, 255, 0.4);
     }
     .badge {
-      background: #333;
-      color: #ff00ff;
-      padding: 0.2rem 0.5rem;
-      border-radius: 0.25rem;
+      background: linear-gradient(90deg, rgba(255,0,255,0.2), rgba(0,255,255,0.2));
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
       font-size: 0.75rem;
       font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .pagination-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
   </style>
 </head>
 <body class="min-h-screen">
-  <header class="text-center py-12 px-4 bg-gradient-to-b from-cyber-pink to-cyber-cyan text-white">
-    <img src="https://avatars.githubusercontent.com/u/49252920?v=4" alt="Satyaa Goyal" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-cyber-bg">
-    <h1 class="text-4xl font-bold mb-2 text-white">Satyaa Goyal</h1>
-    <p class="text-lg text-white opacity-90">Full-Stack Developer, AI/self-hosting enthusiast, Raspberry Pi tinkerer</p>
-    <p class="text-sm mt-2">@CrimsonDevil333333</p>
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-surface/90 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
+      <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        Portfolio Dashboard
+      </h1>
+    </div>
   </header>
 
   <main class="max-w-7xl mx-auto px-4 py-8">
     <!-- Stats -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 text-center">
-      <div class="glass-card p-6">
-        <div class="text-3xl font-bold text-cyber-cyan" id="total-repos">0</div>
-        <div class="text-sm uppercase tracking-widest text-gray-400">Repositories</div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+      <div class="glass-card p-6 flex flex-col items-center">
+        <span class="material-icons text-3xl mb-2" style="color: #ff00ff;">code</span>
+        <div class="text-3xl font-bold" id="total-repos">0</div>
+        <div class="text-sm uppercase tracking-widest text-muted">Repositories</div>
       </div>
-      <div class="glass-card p-6">
-        <div class="text-3xl font-bold text-cyber-cyan" id="top-lang">-</div>
-        <div class="text-sm uppercase tracking-widest text-gray-400">Top Language</div>
+      <div class="glass-card p-6 flex flex-col items-center">
+        <span class="material-icons text-3xl mb-2" style="color: #00ffff;">code</span>
+        <div class="text-3xl font-bold" id="top-lang">-</div>
+        <div class="text-sm uppercase tracking-widest text-muted">Top Language</div>
       </div>
-      <div class="glass-card p-6">
-        <div class="text-3xl font-bold text-cyber-pink" id="total-updated">-</div>
-        <div class="text-sm uppercase tracking-widest text-gray-400">Recent Updates (30d)</div>
+      <div class="glass-card p-6 flex flex-col items-center">
+        <span class="material-icons text-3xl mb-2" style="color: #ff00ff;">update</span>
+        <div class="text-3xl font-bold" id="total-updated">-</div>
+        <div class="text-sm uppercase tracking-widest text-muted">Recent Updates (30d)</div>
       </div>
-      <div class="glass-card p-6">
-        <div class="text-3xl font-bold text-cyber-cyan" id="account-age">-</div>
-        <div class="text-sm uppercase tracking-widest text-gray-400">Years on GitHub</div>
+      <div class="glass-card p-6 flex flex-col items-center">
+        <span class="material-icons text-3xl mb-2" style="color: #00ffff;">calendar_today</span>
+        <div class="text-3xl font-bold" id="account-age">-</div>
+        <div class="text-sm uppercase tracking-widest text-muted">Years on GitHub</div>
       </div>
     </div>
 
     <!-- Search -->
-    <div class="mb-8">
-      <input type="text" id="search" placeholder="Search repositories..." class="w-full p-4 rounded-lg bg-cyber-card border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-cyber-pink focus:border-transparent">
+    <div class="mb-8 max-w-xl mx-auto">
+      <div class="relative">
+        <span class="material-icons absolute left-4 top-1/2 transform -translate-y-1/2" style="color: #00ffff;">search</span>
+        <input type="text" id="search" placeholder="Search repositories..." class="w-full pl-12 pr-4 py-3 rounded-xl bg-surface border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition">
+      </div>
     </div>
 
     <!-- Grid -->
-    <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
 
     <!-- Pagination -->
-    <div id="pagination" class="flex justify-center items-center gap-4 mt-8 mb-12">
-      <button id="prevBtn" class="px-4 py-2 bg-cyber-card border border-gray-700 rounded-lg hover:bg-gray-800 disabled:opacity-50 transition">Prev</button>
-      <span id="pageInfo" class="text-sm text-gray-400">Page 1 of 1</span>
-      <button id="nextBtn" class="px-4 py-2 bg-cyber-card border border-gray-700 rounded-lg hover:bg-gray-800 disabled:opacity-50 transition">Next</button>
+    <div id="pagination" class="flex justify-center items-center gap-4 mt-12">
+      <button id="prevBtn" class="pagination-btn px-6 py-2 bg-surface border border-gray-700 rounded-lg hover:bg-gray-800 transition flex items-center gap-2">
+        <span class="material-icons" style="font-size:18px;">chevron_left</span> Prev
+      </button>
+      <span id="pageInfo" class="text-sm text-muted"></span>
+      <button id="nextBtn" class="pagination-btn px-6 py-2 bg-surface border border-gray-700 rounded-lg hover:bg-gray-800 transition flex items-center gap-2">
+        Next <span class="material-icons" style="font-size:18px;">chevron_right</span>
+      </button>
     </div>
   </main>
 
-  <footer class="text-center py-8 text-gray-500 text-sm">
+  <footer class="text-center py-8 text-muted text-sm">
     <p>© <span id="year"></span> Satyaa Goyal | Built with Clawdy 🐱</p>
   </footer>
 
@@ -108,7 +135,7 @@
         const resp = await fetch('curated_repos.json');
         if (!resp.ok) throw new Error('Failed to load repo data');
         let data = await resp.json();
-        // Sort by latest pushed_at descending
+        // Sort by pushed_at descending (latest first)
         data.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
         allData = data;
         currentData = allData;
@@ -117,7 +144,7 @@
         renderPagination();
       } catch (err) {
         console.error(err);
-        document.getElementById('cards').innerHTML = '<p class="text-red-500">Failed to load portfolio data.</p>';
+        document.getElementById('cards').innerHTML = '<p class="col-span-full text-red-400">Failed to load portfolio data.</p>';
       }
     }
 
@@ -144,19 +171,16 @@
       const totalRepos = data.length;
       document.getElementById('total-repos').textContent = totalRepos;
 
-      // Top language
       const langCounts = {};
       data.forEach(r => { const l = r.language || 'Unknown'; langCounts[l] = (langCounts[l] || 0) + 1; });
       const topLang = Object.entries(langCounts).sort((a,b) => b[1] - a[1])[0][0];
       document.getElementById('top-lang').textContent = topLang;
 
-      // Recent updates: repos updated in last 30 days
       const thirtyDaysAgo = new Date();
       thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
       const recent = data.filter(r => new Date(r.pushed_at) >= thirtyDaysAgo).length;
       document.getElementById('total-updated').textContent = recent;
 
-      // Account age from join year
       const joinYear = 2019;
       const currentYear = new Date().getFullYear();
       document.getElementById('account-age').textContent = currentYear - joinYear;
@@ -169,7 +193,7 @@
       const end = Math.min(start + perPage, currentData.length);
       const slice = currentData.slice(start, end);
       if (slice.length === 0) {
-        container.innerHTML = '<p class="col-span-full text-gray-400">No repositories match your search.</p>';
+        container.innerHTML = '<p class="col-span-full text-center text-muted">No repositories match your search.</p>';
         return;
       }
       slice.forEach(repo => {
@@ -183,12 +207,19 @@
         const timeAgoStr = pushed ? timeAgo(pushed) : '';
         card.innerHTML = `
           <div>
-            <h3 class="text-xl font-semibold mb-2 text-cyber-pink"><a href="${url}" target="_blank" class="hover:underline">${name}</a></h3>
-            ${desc ? `<p class="text-gray-300 mb-4 line-clamp-3">${desc}</p>` : '<p class="text-gray-500 mb-4 italic">No description</p>'}
+            <h3 class="text-lg font-semibold mb-2 text-primary hover:text-white transition cursor-pointer">
+              <a href="${url}" target="_blank" class="hover:underline">${name}</a>
+            </h3>
+            ${desc ? `<p class="text-muted mb-4 line-clamp-2 leading-relaxed">${desc}</p>` : '<p class="text-gray-600 italic mb-4">No description</p>'}
           </div>
-          <div class="mt-4 flex items-center justify-between">
+          <div class="mt-4 flex justify-between items-center">
             <span class="badge">${lang}</span>
-            ${timeAgoStr ? `<span class="text-xs text-gray-500">Updated ${timeAgoStr}</span>` : ''}
+            <div class="flex items-center gap-3 text-xs text-muted">
+              ${timeAgoStr ? `<span class="flex items-center gap-1"><span class="material-icons" style="font-size:14px;">schedule</span> ${timeAgoStr}</span>` : ''}
+              <a href="${url}" target="_blank" class="flex items-center gap-1 hover:text-secondary transition">
+                <span class="material-icons" style="font-size:14px;">open_in_new</span> Open
+              </a>
+            </div>
           </div>
         `;
         container.appendChild(card);
@@ -198,8 +229,8 @@
     function renderPagination() {
       const totalPages = Math.ceil(currentData.length / perPage);
       document.getElementById('prevBtn').disabled = currentPage === 1;
-      document.getElementById('nextBtn').disabled = currentPage >= totalPages;
-      document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+      document.getElementById('nextBtn').disabled = currentPage >= totalPages || totalPages === 0;
+      document.getElementById('pageInfo').textContent = currentPage === 0 && totalPages === 0 ? '' : `Page ${currentPage} of ${totalPages}`;
     }
 
     // Search filter
@@ -218,12 +249,13 @@
       renderPagination();
     });
 
-    // Pagination buttons
+    // Pagination
     document.getElementById('prevBtn').addEventListener('click', () => {
       if (currentPage > 1) {
         currentPage--;
         renderCards();
         renderPagination();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
     document.getElementById('nextBtn').addEventListener('click', () => {
@@ -232,6 +264,7 @@
         currentPage++;
         renderCards();
         renderPagination();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     });
 
