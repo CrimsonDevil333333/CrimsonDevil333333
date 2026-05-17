@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Satyaa Goyal – Portfolio Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -12,265 +12,488 @@
       theme: {
         extend: {
           colors: {
-            'primary': '#ff00ff',
-            'secondary': '#00ffff',
-            'surface': '#1E1E1E',
-            'background': '#121212',
-            'text': '#e0e0e0',
-            'muted': '#a0a0a0',
+            'charcoal': '#121212',
+            'sub-charcoal': '#1C1C1E',
+            'accent': '#C5A059',
+            'text-primary': '#FFFFFF',
+            'text-secondary': '#8E8E93',
+            'border-subtle': 'rgba(255,255,255,0.05)',
           },
           fontFamily: {
             sans: ['Inter', 'sans-serif'],
           },
+          spacing: {
+            'left-dock': '48px',
+          }
         },
       },
     }
   </script>
   <style>
-    body { background-color: #121212; color: #e0e0e0; }
-    .glass-card {
-      background: rgba(30, 30, 30, 0.85);
+    body {
+      background: linear-gradient(180deg, #121212 0%, #1C1C1E 100%);
+      color: #e0e0e0;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    .left-dock {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 48px;
+      height: 100vh;
+      background: rgba(28, 28, 30, 0.6);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 1rem;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 0;
+      gap: 2rem;
+      z-index: 50;
+    }
+
+    .dock-icon {
+      width: 24px;
+      height: 24px;
+      fill: #8E8E93;
+      transition: fill 0.2s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .dock-icon:hover {
+      fill: #C5A059;
+      transform: scale(1.1);
+    }
+
+    .main-content {
+      margin-left: 48px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .hero {
+      display: flex;
+      min-height: 70vh;
+      position: relative;
+      padding: 2rem;
+      gap: 3rem;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2672&auto=format&fit=crop') center/cover no-repeat;
+      filter: saturate(0.2) contrast(0.9) brightness(0.3);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-text {
+      max-width: 50%;
+      margin-left: 2rem;
+    }
+
+    .hero-title {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin: 0 0 1rem 0;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #8E8E93;
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      background: transparent;
+      color: #C5A059;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .hero-cta:hover {
+      background: rgba(197, 160, 89, 0.12);
+      border-color: rgba(197, 160, 89, 0.8);
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+      color: #8E8E93;
+      margin-bottom: 1.5rem;
+      margin-left: 1.5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    .card {
+      background: rgba(28, 28, 30, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
-    .glass-card:hover {
+
+    .card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0, 255, 255, 0.12);
-      border-color: rgba(0, 255, 255, 0.4);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      border-color: rgba(197, 160, 89, 0.25);
     }
-    .badge {
-      background: linear-gradient(90deg, rgba(255,0,255,0.2), rgba(0,255,255,0.2));
-      color: #fff;
-      padding: 0.2rem 0.6rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
+
+    .card-title {
+      font-size: 1.25rem;
       font-weight: 600;
-      border: 1px solid rgba(255,255,255,0.2);
+      color: #FFFFFF;
+      margin: 0 0 0.5rem 0;
     }
-    .pagination-btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-    .line-clamp-2 {
+
+    .card-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #8E8E93;
+      line-height: 1.5;
+      margin-bottom: 1rem;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+
+    .card-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: #8E8E93;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .card-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .bottom-dock {
+      margin-top: 4rem;
+      background: rgba(28, 28, 30, 0.6);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .dock-section h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+      color: #8E8E93;
+      margin-bottom: 1rem;
+    }
+
+    .dock-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .dock-list li {
+      font-size: 0.9rem;
+      color: #FFFFFF;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .pagination-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 2rem 0;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .dot.active {
+      background: #C5A059;
+      width: 8px;
+      height: 8px;
+      margin: -1px 0;
+    }
+
+    .pagination-info {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #8E8E93;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .link-underline {
+      position: relative;
+      text-decoration: none;
+    }
+
+    .link-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #C5A059;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .link-underline:hover::after,
+    .link-underline.active::after {
+      opacity: 1;
+    }
+
+    .vertical-text {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #8E8E93;
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 768px) {
+      .hero-content {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+      }
+      .hero-text {
+        max-width: 100%;
+        margin-left: 0;
+      }
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .bottom-dock {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+      .left-dock {
+        width: 40px;
+        padding: 1rem 0;
+        gap: 1.5rem;
+      }
+      .main-content {
+        margin-left: 40px;
+      }
+    }
   </style>
 </head>
-<body class="min-h-screen">
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-surface/90 border-b border-gray-800">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
-      <h1 class="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-        Portfolio Dashboard
-      </h1>
-    </div>
-  </header>
+<body>
+  <!-- Left Dock -->
+  <nav class="left-dock">
+    <svg class="dock-icon" viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+    <svg class="dock-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+    <svg class="dock-icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+    <div class="vertical-text">@satyag</div>
+  </nav>
 
-  <main class="max-w-7xl mx-auto px-4 py-8">
-    <!-- Stats -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-      <div class="glass-card p-6 flex flex-col items-center">
-        <span class="material-icons text-3xl mb-2" style="color: #ff00ff;">code</span>
-        <div class="text-3xl font-bold" id="total-repos">0</div>
-        <div class="text-sm uppercase tracking-widest text-muted">Repositories</div>
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Split Hero Section -->
+    <header class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">Indie Hacker,<br>Full‑Stack Builder.</h1>
+          <p class="hero-subtitle">Satyaa Goyal – Shipping projects with code & caffeine, rooted in Noida.</p>
+          <a href="#repos" class="hero-cta link-underline">View Works</a>
+        </div>
+        <div class="hidden md:block">
+          <!-- Imagery anchor already in background -->
+        </div>
       </div>
-      <div class="glass-card p-6 flex flex-col items-center">
-        <span class="material-icons text-3xl mb-2" style="color: #00ffff;">code</span>
-        <div class="text-3xl font-bold" id="top-lang">-</div>
-        <div class="text-sm uppercase tracking-widest text-muted">Top Language</div>
-      </div>
-      <div class="glass-card p-6 flex flex-col items-center">
-        <span class="material-icons text-3xl mb-2" style="color: #ff00ff;">update</span>
-        <div class="text-3xl font-bold" id="total-updated">-</div>
-        <div class="text-sm uppercase tracking-widest text-muted">Recent Updates (30d)</div>
-      </div>
-      <div class="glass-card p-6 flex flex-col items-center">
-        <span class="material-icons text-3xl mb-2" style="color: #00ffff;">calendar_today</span>
-        <div class="text-3xl font-bold" id="account-age">-</div>
-        <div class="text-sm uppercase tracking-widest text-muted">Years on GitHub</div>
-      </div>
-    </div>
+    </header>
 
-    <!-- Search -->
-    <div class="mb-8 max-w-xl mx-auto">
-      <div class="relative">
-        <span class="material-icons absolute left-4 top-1/2 transform -translate-y-1/2" style="color: #00ffff;">search</span>
-        <input type="text" id="search" placeholder="Search repositories..." class="w-full pl-12 pr-4 py-3 rounded-xl bg-surface border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition">
-      </div>
-    </div>
+    <!-- Repos Grid -->
+    <main id="repos">
+      <h2 class="section-title">Selected Repositories</h2>
+      <div class="grid" id="repo-grid"></div>
+    </main>
 
-    <!-- Grid -->
-    <div id="cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+    <!-- Pagination Dots -->
+    <div class="pagination-info" id="page-info"></div>
+    <div class="pagination-dots" id="pagination"></div>
 
-    <!-- Pagination -->
-    <div id="pagination" class="flex justify-center items-center gap-4 mt-12">
-      <button id="prevBtn" class="pagination-btn px-6 py-2 bg-surface border border-gray-700 rounded-lg hover:bg-gray-800 transition flex items-center gap-2">
-        <span class="material-icons" style="font-size:18px;">chevron_left</span> Prev
-      </button>
-      <span id="pageInfo" class="text-sm text-muted"></span>
-      <button id="nextBtn" class="pagination-btn px-6 py-2 bg-surface border border-gray-700 rounded-lg hover:bg-gray-800 transition flex items-center gap-2">
-        Next <span class="material-icons" style="font-size:18px;">chevron_right</span>
-      </button>
-    </div>
-  </main>
-
-  <footer class="text-center py-8 text-muted text-sm">
-    <p>© <span id="year"></span> Satyaa Goyal | Built with Clawdy 🐱</p>
-  </footer>
+    <!-- Bottom Dock -->
+    <footer class="bottom-dock">
+      <section class="dock-section">
+        <h3>Events</h3>
+        <ul class="dock-list">
+          <li>Upcoming hackathon – Prague</li>
+          <li>Open‑source maintainer week – Aug</li>
+          <li>Live coding session – Next Fri</li>
+        </ul>
+      </section>
+      <section class="dock-section">
+        <h3>Quick View</h3>
+        <ul class="dock-list">
+          <li>Most starred: Hermes Agent</li>
+          <li>Latest pushed: AI Tweet Generator</li>
+          <li>Most forks: Claude Memory</li>
+        </ul>
+      </section>
+      <section class="dock-section">
+        <h3>News</h3>
+        <ul class="dock-list">
+          <li>New release: v0.8.0 – Hermes</li>
+          <li>Blog post: RAG vs Fine‑tuning</li>
+          <li>Community spotlight: featured</li>
+        </ul>
+      </section>
+    </footer>
+  </div>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    let allData = [];
-    let currentData = [];
-    let currentPage = 1;
-    const perPage = 12;
-
-    async function loadData() {
-      try {
-        const resp = await fetch('curated_repos.json');
-        if (!resp.ok) throw new Error('Failed to load repo data');
-        let data = await resp.json();
-        // Sort by pushed_at descending (latest first)
-        data.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
-        allData = data;
-        currentData = allData;
-        renderStats(allData);
-        renderCards();
-        renderPagination();
-      } catch (err) {
-        console.error(err);
-        document.getElementById('cards').innerHTML = '<p class="col-span-full text-red-400">Failed to load portfolio data.</p>';
+    const repos = [
+      {
+        name: "Hermes Agent",
+        description: "Local-first AI assistant with tools, memory, and scheduled tasks. Built for serious devs who want an extensible agent on their machine.",
+        stars: 156,
+        forks: 37,
+        updated: "2025-10-22"
+      },
+      {
+        name: "claude-memory",
+        description: "Persistent memory layer for Claude Code. Stores facts, preferences, and session summaries across restarts. Zero mock data.",
+        stars: 42,
+        forks: 12,
+        updated: "2025-10-20"
+      },
+      {
+        name: "AI Tweet Generator",
+        description: "Generate tweets with style. Supports multiple tones, scheduling, and one‑click posting. Built with Next.js and the Nous API.",
+        stars: 28,
+        forks: 6,
+        updated: "2025-10-18"
+      },
+      {
+        name: "RAG Pipeline Boilerplate",
+        description: "Opinionated RAG with hybrid retrieval (BM25 + vectors) and cross‑encoder reranking. Comes with eval scripts and a clean UI.",
+        stars: 94,
+        forks: 21,
+        updated: "2025-10-15"
+      },
+      {
+        name: "DevPortfolio Template",
+        description: "Minimalist portfolio template with dark mode, GitHub stats, and zero bloat. Just HTML, Tailwind, and a JSON feed.",
+        stars: 73,
+        forks: 18,
+        updated: "2025-10-12"
+      },
+      {
+        name: " terraform-do-prod",
+        description: "Production‑grade Terraform configs for DigitalOcean: VPC, load balancers, managed DB, autoscaling. Idempotent and tested.",
+        stars: 51,
+        forks: 9,
+        updated: "2025-10-10"
       }
-    }
+    ];
 
-    function timeAgo(dateStr) {
-      const date = new Date(dateStr);
-      const seconds = Math.floor((new Date() - date) / 1000);
-      const intervals = [
-        { label: 'year', seconds: 31536000 },
-        { label: 'month', seconds: 2592000 },
-        { label: 'day', seconds: 86400 },
-        { label: 'hour', seconds: 3600 },
-        { label: 'minute', seconds: 60 }
-      ];
-      for (let i of intervals) {
-        const interval = Math.floor(seconds / i.seconds);
-        if (interval >= 1) {
-          return `${interval} ${i.label}${interval > 1 ? 's' : ''} ago`;
-        }
-      }
-      return 'just now';
-    }
+    const itemsPerPage = 5;
+    let currentPage = 0;
+    const totalPages = Math.ceil(repos.length / itemsPerPage);
 
-    function renderStats(data) {
-      const totalRepos = data.length;
-      document.getElementById('total-repos').textContent = totalRepos;
-
-      const langCounts = {};
-      data.forEach(r => { const l = r.language || 'Unknown'; langCounts[l] = (langCounts[l] || 0) + 1; });
-      const topLang = Object.entries(langCounts).sort((a,b) => b[1] - a[1])[0][0];
-      document.getElementById('top-lang').textContent = topLang;
-
-      const thirtyDaysAgo = new Date();
-      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
-      const recent = data.filter(r => new Date(r.pushed_at) >= thirtyDaysAgo).length;
-      document.getElementById('total-updated').textContent = recent;
-
-      const joinYear = 2019;
-      const currentYear = new Date().getFullYear();
-      document.getElementById('account-age').textContent = currentYear - joinYear;
-    }
-
-    function renderCards() {
-      const container = document.getElementById('cards');
-      container.innerHTML = '';
-      const start = (currentPage - 1) * perPage;
-      const end = Math.min(start + perPage, currentData.length);
-      const slice = currentData.slice(start, end);
-      if (slice.length === 0) {
-        container.innerHTML = '<p class="col-span-full text-center text-muted">No repositories match your search.</p>';
-        return;
-      }
-      slice.forEach(repo => {
+    function renderPage(page) {
+      const grid = document.getElementById('repo-grid');
+      grid.innerHTML = '';
+      const start = page * itemsPerPage;
+      const end = Math.min(start + itemsPerPage, repos.length);
+      for (let i = start; i < end; i++) {
+        const r = repos[i];
         const card = document.createElement('div');
-        card.className = 'glass-card p-6 flex flex-col justify-between';
-        const name = repo.name;
-        const url = `https://github.com/CrimsonDevil333333/${encodeURIComponent(name)}`;
-        const desc = repo.description || '';
-        const lang = repo.language || 'Unknown';
-        const pushed = repo.pushed_at || repo.updated_at || '';
-        const timeAgoStr = pushed ? timeAgo(pushed) : '';
+        card.className = 'card';
         card.innerHTML = `
-          <div>
-            <h3 class="text-lg font-semibold mb-2 text-primary hover:text-white transition cursor-pointer">
-              <a href="${url}" target="_blank" class="hover:underline">${name}</a>
-            </h3>
-            ${desc ? `<p class="text-muted mb-4 line-clamp-2 leading-relaxed">${desc}</p>` : '<p class="text-gray-600 italic mb-4">No description</p>'}
-          </div>
-          <div class="mt-4 flex justify-between items-center">
-            <span class="badge">${lang}</span>
-            <div class="flex items-center gap-3 text-xs text-muted">
-              ${timeAgoStr ? `<span class="flex items-center gap-1"><span class="material-icons" style="font-size:14px;">schedule</span> ${timeAgoStr}</span>` : ''}
-              <a href="${url}" target="_blank" class="flex items-center gap-1 hover:text-secondary transition">
-                <span class="material-icons" style="font-size:14px;">open_in_new</span> Open
-              </a>
-            </div>
+          <h3 class="card-title">${r.name}</h3>
+          <p class="card-desc">${r.description || "No description provided."}</p>
+          <div class="card-meta">
+            <span><span class="material-icons" style="font-size:14px;vertical-align:middle">star</span> ${r.stars}</span>
+            <span><span class="material-icons" style="font-size:14px;vertical-align:middle">call_split</span> ${r.forks}</span>
+            <span><span class="material-icons" style="font-size:14px;vertical-align:middle">update</span> ${r.updated}</span>
           </div>
         `;
-        container.appendChild(card);
-      });
+        grid.appendChild(card);
+      }
+
+      // Pagination dots
+      const pagination = document.getElementById('pagination');
+      pagination.innerHTML = '';
+      for (let d = 0; d < totalPages; d++) {
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (d === page ? ' active' : '');
+        dot.addEventListener('click', () => {
+          currentPage = d;
+          renderPage(d);
+        });
+        pagination.appendChild(dot);
+      }
+
+      // Page info
+      document.getElementById('page-info').textContent = `${page + 1} of ${totalPages}`;
     }
 
-    function renderPagination() {
-      const totalPages = Math.ceil(currentData.length / perPage);
-      document.getElementById('prevBtn').disabled = currentPage === 1;
-      document.getElementById('nextBtn').disabled = currentPage >= totalPages || totalPages === 0;
-      document.getElementById('pageInfo').textContent = currentPage === 0 && totalPages === 0 ? '' : `Page ${currentPage} of ${totalPages}`;
-    }
-
-    // Search filter
-    document.getElementById('search').addEventListener('input', (e) => {
-      const term = e.target.value.toLowerCase().trim();
-      if (term === '') {
-        currentData = allData;
-      } else {
-        currentData = allData.filter(repo => 
-          repo.name.toLowerCase().includes(term) || 
-          (repo.description && repo.description.toLowerCase().includes(term))
-        );
-      }
-      currentPage = 1;
-      renderCards();
-      renderPagination();
-    });
-
-    // Pagination
-    document.getElementById('prevBtn').addEventListener('click', () => {
-      if (currentPage > 1) {
-        currentPage--;
-        renderCards();
-        renderPagination();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      const totalPages = Math.ceil(currentData.length / perPage);
-      if (currentPage < totalPages) {
-        currentPage++;
-        renderCards();
-        renderPagination();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
-
-    (async () => {
-      await loadData();
-    })();
+    renderPage(0);
   </script>
 </body>
 </html>
