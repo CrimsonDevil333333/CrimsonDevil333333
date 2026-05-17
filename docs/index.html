@@ -406,54 +406,14 @@
   </div>
 
   <script>
-    const repos = [
-      {
-        name: "Hermes Agent",
-        description: "Local-first AI assistant with tools, memory, and scheduled tasks. Built for serious devs who want an extensible agent on their machine.",
-        stars: 156,
-        forks: 37,
-        updated: "2025-10-22"
-      },
-      {
-        name: "claude-memory",
-        description: "Persistent memory layer for Claude Code. Stores facts, preferences, and session summaries across restarts. Zero mock data.",
-        stars: 42,
-        forks: 12,
-        updated: "2025-10-20"
-      },
-      {
-        name: "AI Tweet Generator",
-        description: "Generate tweets with style. Supports multiple tones, scheduling, and one‑click posting. Built with Next.js and the Nous API.",
-        stars: 28,
-        forks: 6,
-        updated: "2025-10-18"
-      },
-      {
-        name: "RAG Pipeline Boilerplate",
-        description: "Opinionated RAG with hybrid retrieval (BM25 + vectors) and cross‑encoder reranking. Comes with eval scripts and a clean UI.",
-        stars: 94,
-        forks: 21,
-        updated: "2025-10-15"
-      },
-      {
-        name: "DevPortfolio Template",
-        description: "Minimalist portfolio template with dark mode, GitHub stats, and zero bloat. Just HTML, Tailwind, and a JSON feed.",
-        stars: 73,
-        forks: 18,
-        updated: "2025-10-12"
-      },
-      {
-        name: " terraform-do-prod",
-        description: "Production‑grade Terraform configs for DigitalOcean: VPC, load balancers, managed DB, autoscaling. Idempotent and tested.",
-        stars: 51,
-        forks: 9,
-        updated: "2025-10-10"
-      }
-    ];
-
-    const itemsPerPage = 5;
+    let repos = [];
+    let itemsPerPage = 5;
     let currentPage = 0;
-    const totalPages = Math.ceil(repos.length / itemsPerPage);
+
+    function formatDate(iso) {
+      const d = new Date(iso);
+      return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
 
     function renderPage(page) {
       const grid = document.getElementById('repo-grid');
@@ -468,15 +428,17 @@
           <h3 class="card-title">${r.name}</h3>
           <p class="card-desc">${r.description || "No description provided."}</p>
           <div class="card-meta">
+            ${r.language ? `<span class="badge" style="background:rgba(255,255,255,0.08);color:#fff;padding:0.2rem 0.6rem;border-radius:9999px;font-size:0.75rem;margin-right:0.5rem">${r.language}</span>` : ''}
             <span><span class="material-icons" style="font-size:14px;vertical-align:middle">star</span> ${r.stars}</span>
             <span><span class="material-icons" style="font-size:14px;vertical-align:middle">call_split</span> ${r.forks}</span>
-            <span><span class="material-icons" style="font-size:14px;vertical-align:middle">update</span> ${r.updated}</span>
+            <span><span class="material-icons" style="font-size:14px;vertical-align:middle">update</span> ${formatDate(r.pushed_at)}</span>
           </div>
         `;
         grid.appendChild(card);
       }
 
       // Pagination dots
+      const totalPages = Math.ceil(repos.length / itemsPerPage);
       const pagination = document.getElementById('pagination');
       pagination.innerHTML = '';
       for (let d = 0; d < totalPages; d++) {
@@ -490,10 +452,24 @@
       }
 
       // Page info
-      document.getElementById('page-info').textContent = `${page + 1} of ${totalPages}`;
+      document.getElementById('page-info').textContent = totalPages > 0 ? `${page + 1} of ${totalPages}` : '';
     }
 
-    renderPage(0);
+    async function loadRepos() {
+      try {
+        const res = await fetch('curated_repos.json');
+        if (!res.ok) throw new Error('Failed to load repos');
+        const data = await res.json();
+        // Sort by pushed_at descending (newest first)
+        repos = data.sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at));
+        renderPage(0);
+      } catch (err) {
+        console.error(err);
+        document.getElementById('repo-grid').innerHTML = '<p style="color:#8E8E93;grid-column:1/-1;text-align:center;padding:2rem;">Unable to load repositories.</p>';
+      }
+    }
+
+    loadRepos();
   </script>
 </body>
 </html>
