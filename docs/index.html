@@ -6,6 +6,7 @@
   <title>Satyaa Goyal – Repositories</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     body {
       background: #121212;
@@ -90,6 +91,21 @@
       border-radius: 9999px;
       font-size: 0.75rem;
     }
+    .readme-btn {
+      margin-top: 0.75rem;
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: 1px solid rgba(197,160,89,0.4);
+      color: #C5A059;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.2s ease;
+    }
+    .readme-btn:hover {
+      background: rgba(197,160,89,0.12);
+      border-color: rgba(197,160,89,0.8);
+    }
     .pagination {
       display: flex;
       justify-content: center;
@@ -126,6 +142,100 @@
       .container { padding: 1rem; }
       .grid { grid-template-columns: 1fr; }
     }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+    }
+    .modal-content {
+      background: #1C1C1E;
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.1);
+      margin: 2rem;
+    }
+    .close-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      font-size: 2rem;
+      color: #C5A059;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .close-btn:hover {
+      color: #fff;
+    }
+
+    /* Markdown inside modal */
+    #readme-content h1,
+    #readme-content h2,
+    #readme-content h3 {
+      color: #fff;
+      margin-top: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 0.5rem;
+    }
+    #readme-content p {
+      line-height: 1.6;
+      color: #e0e0e0;
+      margin-bottom: 1rem;
+    }
+    #readme-content code {
+      background: rgba(255,255,255,0.1);
+      padding: 0.1rem 0.3rem;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+    #readme-content pre {
+      background: rgba(0,0,0,0.3);
+      padding: 1rem;
+      border-radius: 6px;
+      overflow: auto;
+      margin: 1rem 0;
+    }
+    #readme-content pre code {
+      background: none;
+      padding: 0;
+    }
+    #readme-content blockquote {
+      border-left: 3px solid #C5A059;
+      padding-left: 1rem;
+      color: #8E8E93;
+      margin: 1rem 0;
+    }
+    #readme-content ul,
+    #readme-content ol {
+      padding-left: 1.5rem;
+      margin: 1rem 0;
+    }
+    #readme-content li {
+      margin-bottom: 0.5rem;
+    }
+    #readme-content a {
+      color: #C5A059;
+      text-decoration: underline;
+    }
+    #readme-content img {
+      max-width: 100%;
+      border-radius: 6px;
+    }
   </style>
 </head>
 <body>
@@ -143,7 +253,16 @@
     <div class="pagination" id="pagination"></div>
   </div>
 
+  <!-- Modal for README -->
+  <div id="readme-modal" class="modal">
+    <div class="modal-content">
+      <span id="readme-close" class="close-btn">&times;</span>
+      <div id="readme-content"></div>
+    </div>
+  </div>
+
   <script>
+    const githubUser = 'CrimsonDevil333333';
     let repos = [];
     const itemsPerPage = 5;
     let currentPage = 0;
@@ -163,7 +282,7 @@
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML = `
-          <h3 class="card-title"><a href="https://github.com/CrimsonDevil333333/${encodeURIComponent(r.name)}" target="_blank">${r.name}</a></h3>
+          <h3 class="card-title"><a href="https://github.com/${githubUser}/${encodeURIComponent(r.name)}" target="_blank" rel="noopener noreferrer">${r.name}</a></h3>
           <p class="card-desc">${r.description || "No description provided."}</p>
           <div class="card-meta">
             ${r.language ? `<span class="badge">${r.language}</span>` : ''}
@@ -171,6 +290,7 @@
             <span><span class="material-icons" style="font-size:14px;vertical-align:middle">call_split</span> ${r.forks}</span>
             <span><span class="material-icons" style="font-size:14px;vertical-align:middle">update</span> ${formatDate(r.pushed_at)}</span>
           </div>
+          <button class="readme-btn" data-repo="${r.name}">View README</button>
         `;
         grid.appendChild(card);
       }
@@ -193,7 +313,7 @@
 
     async function loadRepos() {
       try {
-        const res = await fetch('https://api.github.com/users/CrimsonDevil333333/repos?type=owner&sort=pushed&direction=desc&per_page=100');
+        const res = await fetch(`https://api.github.com/users/${githubUser}/repos?type=owner&sort=pushed&direction=desc&per_page=100`);
         if (!res.ok) throw new Error('Failed to fetch repos');
         const data = await res.json();
         repos = data.map(r => ({
@@ -211,6 +331,53 @@
       }
     }
 
+    // README modal functionality
+    async function showReadme(repoName) {
+      const modal = document.getElementById('readme-modal');
+      const content = document.getElementById('readme-content');
+      content.innerHTML = '<p style="color:#8E8E93">Loading README...</p>';
+      modal.style.display = 'flex';
+      try {
+        const res = await fetch(`https://api.github.com/repos/${githubUser}/${encodeURIComponent(repoName)}/readme`);
+        if (!res.ok) {
+          if (res.status === 404) {
+            content.innerHTML = '<p style="color:#8E8E93">No README found for this repository.</p>';
+          } else {
+            throw new Error(`Failed: ${res.status}`);
+          }
+          return;
+        }
+        const data = await res.json();
+        let readmeHtml;
+        if (data.encoding === 'base64') {
+          const decoded = atob(data.content);
+          readmeHtml = marked.parse(decoded);
+        } else {
+          readmeHtml = data.content;
+        }
+        content.innerHTML = readmeHtml;
+      } catch (err) {
+        console.error(err);
+        content.innerHTML = '<p style="color:#ff6b6b">Error loading README. Please try again later.</p>';
+      }
+    }
+
+    // Modal close handlers
+    const modal = document.getElementById('readme-modal');
+    const closeBtn = document.getElementById('readme-close');
+    closeBtn.onclick = () => modal.style.display = 'none';
+    modal.onclick = (e) => { if (e.target === modal) modal.style.display = 'none'; };
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.style.display = 'none'; });
+
+    // Event delegation for readme buttons
+    document.getElementById('repo-grid').addEventListener('click', (e) => {
+      if (e.target.classList.contains('readme-btn')) {
+        const repo = e.target.dataset.repo;
+        if (repo) showReadme(repo);
+      }
+    });
+
+    // Initial load
     loadRepos();
   </script>
 </body>
